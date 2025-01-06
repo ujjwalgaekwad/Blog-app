@@ -4,7 +4,7 @@ import { Client, ID, Storage } from "appwrite";
 export class UploadServie {
     client = new Client();
     storage;
-    constructor(){
+    constructor(){ 
         this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);

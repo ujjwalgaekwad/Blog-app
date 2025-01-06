@@ -53,16 +53,18 @@ export class Service {
     async deletePost(slug){
         try {
             await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                conf.appwriteCollectionId,
-                slug,
+                slug
+            
             )
-            return true;
+            return true
         } catch (error) {
-            console.log("Appwrite>Databases>deletePost>Error",error); 
-            return false;
+            console.log("Appwrite serive>deletePost>error", error);
+            return false
         }
     }
+
 
     async getPost(slug){
         try {
@@ -76,7 +78,7 @@ export class Service {
         }
     }
 
-    async getPost(queries = [Query.equal("status", "active")]){
+    async getPosts(queries = [Query.equal("status", "active")]){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
@@ -86,7 +88,7 @@ export class Service {
         } catch (error) {
             console.log("Appwrite>Databases>getPosts>Error",error);
         }
-    }
+    } 
 
 }
 
